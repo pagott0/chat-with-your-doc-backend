@@ -20,7 +20,14 @@ export class AuthService {
       },
     });
 
-    return this.generateToken(user.id, user.email);
+    return {
+      success: true,
+      message: 'User created successfully',
+      data: {
+        email: user.email,
+        name: user.name,
+      },
+    };
   }
 
   async login(email: string, password: string) {
@@ -36,6 +43,6 @@ export class AuthService {
     const payload = { sub: userId, email };
     const token = this.jwtService.sign(payload);
 
-    return { access_token: token };
+    return { access_token: token, user: { id: userId, email } };
   }
 }

@@ -18,6 +18,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * 
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+/**
+ * Model UploadedDocument
+ * 
+ */
+export type UploadedDocument = $Result.DefaultSelection<Prisma.$UploadedDocumentPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -153,6 +158,16 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.uploadedDocument`: Exposes CRUD operations for the **UploadedDocument** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UploadedDocuments
+    * const uploadedDocuments = await prisma.uploadedDocument.findMany()
+    * ```
+    */
+  get uploadedDocument(): Prisma.UploadedDocumentDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -593,7 +608,8 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    User: 'User'
+    User: 'User',
+    UploadedDocument: 'UploadedDocument'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -612,7 +628,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user"
+      modelProps: "user" | "uploadedDocument"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -687,6 +703,80 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>
             result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      UploadedDocument: {
+        payload: Prisma.$UploadedDocumentPayload<ExtArgs>
+        fields: Prisma.UploadedDocumentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UploadedDocumentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UploadedDocumentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UploadedDocumentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UploadedDocumentPayload>
+          }
+          findFirst: {
+            args: Prisma.UploadedDocumentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UploadedDocumentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UploadedDocumentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UploadedDocumentPayload>
+          }
+          findMany: {
+            args: Prisma.UploadedDocumentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UploadedDocumentPayload>[]
+          }
+          create: {
+            args: Prisma.UploadedDocumentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UploadedDocumentPayload>
+          }
+          createMany: {
+            args: Prisma.UploadedDocumentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UploadedDocumentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UploadedDocumentPayload>[]
+          }
+          delete: {
+            args: Prisma.UploadedDocumentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UploadedDocumentPayload>
+          }
+          update: {
+            args: Prisma.UploadedDocumentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UploadedDocumentPayload>
+          }
+          deleteMany: {
+            args: Prisma.UploadedDocumentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UploadedDocumentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.UploadedDocumentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UploadedDocumentPayload>[]
+          }
+          upsert: {
+            args: Prisma.UploadedDocumentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UploadedDocumentPayload>
+          }
+          aggregate: {
+            args: Prisma.UploadedDocumentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUploadedDocument>
+          }
+          groupBy: {
+            args: Prisma.UploadedDocumentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UploadedDocumentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UploadedDocumentCountArgs<ExtArgs>
+            result: $Utils.Optional<UploadedDocumentCountAggregateOutputType> | number
           }
         }
       }
@@ -775,6 +865,7 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     user?: UserOmit
+    uploadedDocument?: UploadedDocumentOmit
   }
 
   /* Types for Logging */
@@ -863,6 +954,36 @@ export namespace Prisma {
    * Count Types
    */
 
+
+  /**
+   * Count Type UserCountOutputType
+   */
+
+  export type UserCountOutputType = {
+    UploadedDocument: number
+  }
+
+  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    UploadedDocument?: boolean | UserCountOutputTypeCountUploadedDocumentArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCountOutputType
+     */
+    select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountUploadedDocumentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UploadedDocumentWhereInput
+  }
 
 
   /**
@@ -1033,6 +1154,8 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     createdAt?: boolean
+    UploadedDocument?: boolean | User$UploadedDocumentArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1060,10 +1183,18 @@ export namespace Prisma {
   }
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "createdAt", ExtArgs["result"]["user"]>
+  export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    UploadedDocument?: boolean | User$UploadedDocumentArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
-    objects: {}
+    objects: {
+      UploadedDocument: Prisma.$UploadedDocumentPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string | null
@@ -1464,6 +1595,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    UploadedDocument<T extends User$UploadedDocumentArgs<ExtArgs> = {}>(args?: Subset<T, User$UploadedDocumentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1515,6 +1647,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -1533,6 +1669,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -1550,6 +1690,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * Filter, which User to fetch.
      */
@@ -1599,6 +1743,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where?: UserWhereInput
@@ -1647,6 +1795,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where?: UserWhereInput
@@ -1689,6 +1841,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to create a User.
      */
@@ -1737,6 +1893,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to update a User.
      */
@@ -1804,6 +1964,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * The filter to search for the User to update in case it exists.
      */
     where: UserWhereUniqueInput
@@ -1830,6 +1994,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter which User to delete.
      */
     where: UserWhereUniqueInput
@@ -1850,6 +2018,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.UploadedDocument
+   */
+  export type User$UploadedDocumentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UploadedDocument
+     */
+    select?: UploadedDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UploadedDocument
+     */
+    omit?: UploadedDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UploadedDocumentInclude<ExtArgs> | null
+    where?: UploadedDocumentWhereInput
+    orderBy?: UploadedDocumentOrderByWithRelationInput | UploadedDocumentOrderByWithRelationInput[]
+    cursor?: UploadedDocumentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UploadedDocumentScalarFieldEnum | UploadedDocumentScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1861,6 +2053,1145 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model UploadedDocument
+   */
+
+  export type AggregateUploadedDocument = {
+    _count: UploadedDocumentCountAggregateOutputType | null
+    _avg: UploadedDocumentAvgAggregateOutputType | null
+    _sum: UploadedDocumentSumAggregateOutputType | null
+    _min: UploadedDocumentMinAggregateOutputType | null
+    _max: UploadedDocumentMaxAggregateOutputType | null
+  }
+
+  export type UploadedDocumentAvgAggregateOutputType = {
+    id: number | null
+    fileSize: number | null
+  }
+
+  export type UploadedDocumentSumAggregateOutputType = {
+    id: number | null
+    fileSize: number | null
+  }
+
+  export type UploadedDocumentMinAggregateOutputType = {
+    id: number | null
+    userId: string | null
+    file: Uint8Array | null
+    fileName: string | null
+    fileType: string | null
+    fileSize: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type UploadedDocumentMaxAggregateOutputType = {
+    id: number | null
+    userId: string | null
+    file: Uint8Array | null
+    fileName: string | null
+    fileType: string | null
+    fileSize: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type UploadedDocumentCountAggregateOutputType = {
+    id: number
+    userId: number
+    file: number
+    fileName: number
+    fileType: number
+    fileSize: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type UploadedDocumentAvgAggregateInputType = {
+    id?: true
+    fileSize?: true
+  }
+
+  export type UploadedDocumentSumAggregateInputType = {
+    id?: true
+    fileSize?: true
+  }
+
+  export type UploadedDocumentMinAggregateInputType = {
+    id?: true
+    userId?: true
+    file?: true
+    fileName?: true
+    fileType?: true
+    fileSize?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type UploadedDocumentMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    file?: true
+    fileName?: true
+    fileType?: true
+    fileSize?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type UploadedDocumentCountAggregateInputType = {
+    id?: true
+    userId?: true
+    file?: true
+    fileName?: true
+    fileType?: true
+    fileSize?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type UploadedDocumentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UploadedDocument to aggregate.
+     */
+    where?: UploadedDocumentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UploadedDocuments to fetch.
+     */
+    orderBy?: UploadedDocumentOrderByWithRelationInput | UploadedDocumentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UploadedDocumentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UploadedDocuments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UploadedDocuments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UploadedDocuments
+    **/
+    _count?: true | UploadedDocumentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: UploadedDocumentAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UploadedDocumentSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UploadedDocumentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UploadedDocumentMaxAggregateInputType
+  }
+
+  export type GetUploadedDocumentAggregateType<T extends UploadedDocumentAggregateArgs> = {
+        [P in keyof T & keyof AggregateUploadedDocument]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUploadedDocument[P]>
+      : GetScalarType<T[P], AggregateUploadedDocument[P]>
+  }
+
+
+
+
+  export type UploadedDocumentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UploadedDocumentWhereInput
+    orderBy?: UploadedDocumentOrderByWithAggregationInput | UploadedDocumentOrderByWithAggregationInput[]
+    by: UploadedDocumentScalarFieldEnum[] | UploadedDocumentScalarFieldEnum
+    having?: UploadedDocumentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UploadedDocumentCountAggregateInputType | true
+    _avg?: UploadedDocumentAvgAggregateInputType
+    _sum?: UploadedDocumentSumAggregateInputType
+    _min?: UploadedDocumentMinAggregateInputType
+    _max?: UploadedDocumentMaxAggregateInputType
+  }
+
+  export type UploadedDocumentGroupByOutputType = {
+    id: number
+    userId: string
+    file: Uint8Array
+    fileName: string
+    fileType: string
+    fileSize: number
+    createdAt: Date
+    updatedAt: Date
+    _count: UploadedDocumentCountAggregateOutputType | null
+    _avg: UploadedDocumentAvgAggregateOutputType | null
+    _sum: UploadedDocumentSumAggregateOutputType | null
+    _min: UploadedDocumentMinAggregateOutputType | null
+    _max: UploadedDocumentMaxAggregateOutputType | null
+  }
+
+  type GetUploadedDocumentGroupByPayload<T extends UploadedDocumentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UploadedDocumentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UploadedDocumentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UploadedDocumentGroupByOutputType[P]>
+            : GetScalarType<T[P], UploadedDocumentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UploadedDocumentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    file?: boolean
+    fileName?: boolean
+    fileType?: boolean
+    fileSize?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["uploadedDocument"]>
+
+  export type UploadedDocumentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    file?: boolean
+    fileName?: boolean
+    fileType?: boolean
+    fileSize?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["uploadedDocument"]>
+
+  export type UploadedDocumentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    file?: boolean
+    fileName?: boolean
+    fileType?: boolean
+    fileSize?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["uploadedDocument"]>
+
+  export type UploadedDocumentSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    file?: boolean
+    fileName?: boolean
+    fileType?: boolean
+    fileSize?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type UploadedDocumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "file" | "fileName" | "fileType" | "fileSize" | "createdAt" | "updatedAt", ExtArgs["result"]["uploadedDocument"]>
+  export type UploadedDocumentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type UploadedDocumentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type UploadedDocumentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $UploadedDocumentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UploadedDocument"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      userId: string
+      file: Uint8Array
+      fileName: string
+      fileType: string
+      fileSize: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["uploadedDocument"]>
+    composites: {}
+  }
+
+  type UploadedDocumentGetPayload<S extends boolean | null | undefined | UploadedDocumentDefaultArgs> = $Result.GetResult<Prisma.$UploadedDocumentPayload, S>
+
+  type UploadedDocumentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UploadedDocumentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UploadedDocumentCountAggregateInputType | true
+    }
+
+  export interface UploadedDocumentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UploadedDocument'], meta: { name: 'UploadedDocument' } }
+    /**
+     * Find zero or one UploadedDocument that matches the filter.
+     * @param {UploadedDocumentFindUniqueArgs} args - Arguments to find a UploadedDocument
+     * @example
+     * // Get one UploadedDocument
+     * const uploadedDocument = await prisma.uploadedDocument.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UploadedDocumentFindUniqueArgs>(args: SelectSubset<T, UploadedDocumentFindUniqueArgs<ExtArgs>>): Prisma__UploadedDocumentClient<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one UploadedDocument that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UploadedDocumentFindUniqueOrThrowArgs} args - Arguments to find a UploadedDocument
+     * @example
+     * // Get one UploadedDocument
+     * const uploadedDocument = await prisma.uploadedDocument.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UploadedDocumentFindUniqueOrThrowArgs>(args: SelectSubset<T, UploadedDocumentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UploadedDocumentClient<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UploadedDocument that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UploadedDocumentFindFirstArgs} args - Arguments to find a UploadedDocument
+     * @example
+     * // Get one UploadedDocument
+     * const uploadedDocument = await prisma.uploadedDocument.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UploadedDocumentFindFirstArgs>(args?: SelectSubset<T, UploadedDocumentFindFirstArgs<ExtArgs>>): Prisma__UploadedDocumentClient<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UploadedDocument that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UploadedDocumentFindFirstOrThrowArgs} args - Arguments to find a UploadedDocument
+     * @example
+     * // Get one UploadedDocument
+     * const uploadedDocument = await prisma.uploadedDocument.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UploadedDocumentFindFirstOrThrowArgs>(args?: SelectSubset<T, UploadedDocumentFindFirstOrThrowArgs<ExtArgs>>): Prisma__UploadedDocumentClient<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more UploadedDocuments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UploadedDocumentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UploadedDocuments
+     * const uploadedDocuments = await prisma.uploadedDocument.findMany()
+     * 
+     * // Get first 10 UploadedDocuments
+     * const uploadedDocuments = await prisma.uploadedDocument.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const uploadedDocumentWithIdOnly = await prisma.uploadedDocument.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UploadedDocumentFindManyArgs>(args?: SelectSubset<T, UploadedDocumentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a UploadedDocument.
+     * @param {UploadedDocumentCreateArgs} args - Arguments to create a UploadedDocument.
+     * @example
+     * // Create one UploadedDocument
+     * const UploadedDocument = await prisma.uploadedDocument.create({
+     *   data: {
+     *     // ... data to create a UploadedDocument
+     *   }
+     * })
+     * 
+     */
+    create<T extends UploadedDocumentCreateArgs>(args: SelectSubset<T, UploadedDocumentCreateArgs<ExtArgs>>): Prisma__UploadedDocumentClient<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many UploadedDocuments.
+     * @param {UploadedDocumentCreateManyArgs} args - Arguments to create many UploadedDocuments.
+     * @example
+     * // Create many UploadedDocuments
+     * const uploadedDocument = await prisma.uploadedDocument.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UploadedDocumentCreateManyArgs>(args?: SelectSubset<T, UploadedDocumentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many UploadedDocuments and returns the data saved in the database.
+     * @param {UploadedDocumentCreateManyAndReturnArgs} args - Arguments to create many UploadedDocuments.
+     * @example
+     * // Create many UploadedDocuments
+     * const uploadedDocument = await prisma.uploadedDocument.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many UploadedDocuments and only return the `id`
+     * const uploadedDocumentWithIdOnly = await prisma.uploadedDocument.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UploadedDocumentCreateManyAndReturnArgs>(args?: SelectSubset<T, UploadedDocumentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a UploadedDocument.
+     * @param {UploadedDocumentDeleteArgs} args - Arguments to delete one UploadedDocument.
+     * @example
+     * // Delete one UploadedDocument
+     * const UploadedDocument = await prisma.uploadedDocument.delete({
+     *   where: {
+     *     // ... filter to delete one UploadedDocument
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UploadedDocumentDeleteArgs>(args: SelectSubset<T, UploadedDocumentDeleteArgs<ExtArgs>>): Prisma__UploadedDocumentClient<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one UploadedDocument.
+     * @param {UploadedDocumentUpdateArgs} args - Arguments to update one UploadedDocument.
+     * @example
+     * // Update one UploadedDocument
+     * const uploadedDocument = await prisma.uploadedDocument.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UploadedDocumentUpdateArgs>(args: SelectSubset<T, UploadedDocumentUpdateArgs<ExtArgs>>): Prisma__UploadedDocumentClient<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more UploadedDocuments.
+     * @param {UploadedDocumentDeleteManyArgs} args - Arguments to filter UploadedDocuments to delete.
+     * @example
+     * // Delete a few UploadedDocuments
+     * const { count } = await prisma.uploadedDocument.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UploadedDocumentDeleteManyArgs>(args?: SelectSubset<T, UploadedDocumentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UploadedDocuments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UploadedDocumentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UploadedDocuments
+     * const uploadedDocument = await prisma.uploadedDocument.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UploadedDocumentUpdateManyArgs>(args: SelectSubset<T, UploadedDocumentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UploadedDocuments and returns the data updated in the database.
+     * @param {UploadedDocumentUpdateManyAndReturnArgs} args - Arguments to update many UploadedDocuments.
+     * @example
+     * // Update many UploadedDocuments
+     * const uploadedDocument = await prisma.uploadedDocument.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more UploadedDocuments and only return the `id`
+     * const uploadedDocumentWithIdOnly = await prisma.uploadedDocument.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UploadedDocumentUpdateManyAndReturnArgs>(args: SelectSubset<T, UploadedDocumentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one UploadedDocument.
+     * @param {UploadedDocumentUpsertArgs} args - Arguments to update or create a UploadedDocument.
+     * @example
+     * // Update or create a UploadedDocument
+     * const uploadedDocument = await prisma.uploadedDocument.upsert({
+     *   create: {
+     *     // ... data to create a UploadedDocument
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UploadedDocument we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UploadedDocumentUpsertArgs>(args: SelectSubset<T, UploadedDocumentUpsertArgs<ExtArgs>>): Prisma__UploadedDocumentClient<$Result.GetResult<Prisma.$UploadedDocumentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of UploadedDocuments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UploadedDocumentCountArgs} args - Arguments to filter UploadedDocuments to count.
+     * @example
+     * // Count the number of UploadedDocuments
+     * const count = await prisma.uploadedDocument.count({
+     *   where: {
+     *     // ... the filter for the UploadedDocuments we want to count
+     *   }
+     * })
+    **/
+    count<T extends UploadedDocumentCountArgs>(
+      args?: Subset<T, UploadedDocumentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UploadedDocumentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UploadedDocument.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UploadedDocumentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UploadedDocumentAggregateArgs>(args: Subset<T, UploadedDocumentAggregateArgs>): Prisma.PrismaPromise<GetUploadedDocumentAggregateType<T>>
+
+    /**
+     * Group by UploadedDocument.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UploadedDocumentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UploadedDocumentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UploadedDocumentGroupByArgs['orderBy'] }
+        : { orderBy?: UploadedDocumentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UploadedDocumentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUploadedDocumentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UploadedDocument model
+   */
+  readonly fields: UploadedDocumentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UploadedDocument.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UploadedDocumentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UploadedDocument model
+   */
+  interface UploadedDocumentFieldRefs {
+    readonly id: FieldRef<"UploadedDocument", 'Int'>
+    readonly userId: FieldRef<"UploadedDocument", 'String'>
+    readonly file: FieldRef<"UploadedDocument", 'Bytes'>
+    readonly fileName: FieldRef<"UploadedDocument", 'String'>
+    readonly fileType: FieldRef<"UploadedDocument", 'String'>
+    readonly fileSize: FieldRef<"UploadedDocument", 'Int'>
+    readonly createdAt: FieldRef<"UploadedDocument", 'DateTime'>
+    readonly updatedAt: FieldRef<"UploadedDocument", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UploadedDocument findUnique
+   */
+  export type UploadedDocumentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UploadedDocument
+     */
+    select?: UploadedDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UploadedDocument
+     */
+    omit?: UploadedDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UploadedDocumentInclude<ExtArgs> | null
+    /**
+     * Filter, which UploadedDocument to fetch.
+     */
+    where: UploadedDocumentWhereUniqueInput
+  }
+
+  /**
+   * UploadedDocument findUniqueOrThrow
+   */
+  export type UploadedDocumentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UploadedDocument
+     */
+    select?: UploadedDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UploadedDocument
+     */
+    omit?: UploadedDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UploadedDocumentInclude<ExtArgs> | null
+    /**
+     * Filter, which UploadedDocument to fetch.
+     */
+    where: UploadedDocumentWhereUniqueInput
+  }
+
+  /**
+   * UploadedDocument findFirst
+   */
+  export type UploadedDocumentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UploadedDocument
+     */
+    select?: UploadedDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UploadedDocument
+     */
+    omit?: UploadedDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UploadedDocumentInclude<ExtArgs> | null
+    /**
+     * Filter, which UploadedDocument to fetch.
+     */
+    where?: UploadedDocumentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UploadedDocuments to fetch.
+     */
+    orderBy?: UploadedDocumentOrderByWithRelationInput | UploadedDocumentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UploadedDocuments.
+     */
+    cursor?: UploadedDocumentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UploadedDocuments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UploadedDocuments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UploadedDocuments.
+     */
+    distinct?: UploadedDocumentScalarFieldEnum | UploadedDocumentScalarFieldEnum[]
+  }
+
+  /**
+   * UploadedDocument findFirstOrThrow
+   */
+  export type UploadedDocumentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UploadedDocument
+     */
+    select?: UploadedDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UploadedDocument
+     */
+    omit?: UploadedDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UploadedDocumentInclude<ExtArgs> | null
+    /**
+     * Filter, which UploadedDocument to fetch.
+     */
+    where?: UploadedDocumentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UploadedDocuments to fetch.
+     */
+    orderBy?: UploadedDocumentOrderByWithRelationInput | UploadedDocumentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UploadedDocuments.
+     */
+    cursor?: UploadedDocumentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UploadedDocuments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UploadedDocuments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UploadedDocuments.
+     */
+    distinct?: UploadedDocumentScalarFieldEnum | UploadedDocumentScalarFieldEnum[]
+  }
+
+  /**
+   * UploadedDocument findMany
+   */
+  export type UploadedDocumentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UploadedDocument
+     */
+    select?: UploadedDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UploadedDocument
+     */
+    omit?: UploadedDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UploadedDocumentInclude<ExtArgs> | null
+    /**
+     * Filter, which UploadedDocuments to fetch.
+     */
+    where?: UploadedDocumentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UploadedDocuments to fetch.
+     */
+    orderBy?: UploadedDocumentOrderByWithRelationInput | UploadedDocumentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UploadedDocuments.
+     */
+    cursor?: UploadedDocumentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UploadedDocuments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UploadedDocuments.
+     */
+    skip?: number
+    distinct?: UploadedDocumentScalarFieldEnum | UploadedDocumentScalarFieldEnum[]
+  }
+
+  /**
+   * UploadedDocument create
+   */
+  export type UploadedDocumentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UploadedDocument
+     */
+    select?: UploadedDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UploadedDocument
+     */
+    omit?: UploadedDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UploadedDocumentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a UploadedDocument.
+     */
+    data: XOR<UploadedDocumentCreateInput, UploadedDocumentUncheckedCreateInput>
+  }
+
+  /**
+   * UploadedDocument createMany
+   */
+  export type UploadedDocumentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UploadedDocuments.
+     */
+    data: UploadedDocumentCreateManyInput | UploadedDocumentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UploadedDocument createManyAndReturn
+   */
+  export type UploadedDocumentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UploadedDocument
+     */
+    select?: UploadedDocumentSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UploadedDocument
+     */
+    omit?: UploadedDocumentOmit<ExtArgs> | null
+    /**
+     * The data used to create many UploadedDocuments.
+     */
+    data: UploadedDocumentCreateManyInput | UploadedDocumentCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UploadedDocumentIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UploadedDocument update
+   */
+  export type UploadedDocumentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UploadedDocument
+     */
+    select?: UploadedDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UploadedDocument
+     */
+    omit?: UploadedDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UploadedDocumentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a UploadedDocument.
+     */
+    data: XOR<UploadedDocumentUpdateInput, UploadedDocumentUncheckedUpdateInput>
+    /**
+     * Choose, which UploadedDocument to update.
+     */
+    where: UploadedDocumentWhereUniqueInput
+  }
+
+  /**
+   * UploadedDocument updateMany
+   */
+  export type UploadedDocumentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UploadedDocuments.
+     */
+    data: XOR<UploadedDocumentUpdateManyMutationInput, UploadedDocumentUncheckedUpdateManyInput>
+    /**
+     * Filter which UploadedDocuments to update
+     */
+    where?: UploadedDocumentWhereInput
+    /**
+     * Limit how many UploadedDocuments to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UploadedDocument updateManyAndReturn
+   */
+  export type UploadedDocumentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UploadedDocument
+     */
+    select?: UploadedDocumentSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UploadedDocument
+     */
+    omit?: UploadedDocumentOmit<ExtArgs> | null
+    /**
+     * The data used to update UploadedDocuments.
+     */
+    data: XOR<UploadedDocumentUpdateManyMutationInput, UploadedDocumentUncheckedUpdateManyInput>
+    /**
+     * Filter which UploadedDocuments to update
+     */
+    where?: UploadedDocumentWhereInput
+    /**
+     * Limit how many UploadedDocuments to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UploadedDocumentIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UploadedDocument upsert
+   */
+  export type UploadedDocumentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UploadedDocument
+     */
+    select?: UploadedDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UploadedDocument
+     */
+    omit?: UploadedDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UploadedDocumentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the UploadedDocument to update in case it exists.
+     */
+    where: UploadedDocumentWhereUniqueInput
+    /**
+     * In case the UploadedDocument found by the `where` argument doesn't exist, create a new UploadedDocument with this data.
+     */
+    create: XOR<UploadedDocumentCreateInput, UploadedDocumentUncheckedCreateInput>
+    /**
+     * In case the UploadedDocument was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UploadedDocumentUpdateInput, UploadedDocumentUncheckedUpdateInput>
+  }
+
+  /**
+   * UploadedDocument delete
+   */
+  export type UploadedDocumentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UploadedDocument
+     */
+    select?: UploadedDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UploadedDocument
+     */
+    omit?: UploadedDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UploadedDocumentInclude<ExtArgs> | null
+    /**
+     * Filter which UploadedDocument to delete.
+     */
+    where: UploadedDocumentWhereUniqueInput
+  }
+
+  /**
+   * UploadedDocument deleteMany
+   */
+  export type UploadedDocumentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UploadedDocuments to delete
+     */
+    where?: UploadedDocumentWhereInput
+    /**
+     * Limit how many UploadedDocuments to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * UploadedDocument without action
+   */
+  export type UploadedDocumentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UploadedDocument
+     */
+    select?: UploadedDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UploadedDocument
+     */
+    omit?: UploadedDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UploadedDocumentInclude<ExtArgs> | null
   }
 
 
@@ -1887,6 +3218,20 @@ export namespace Prisma {
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const UploadedDocumentScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    file: 'file',
+    fileName: 'fileName',
+    fileType: 'fileType',
+    fileSize: 'fileSize',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type UploadedDocumentScalarFieldEnum = (typeof UploadedDocumentScalarFieldEnum)[keyof typeof UploadedDocumentScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -1958,6 +3303,34 @@ export namespace Prisma {
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
+
+
+  /**
+   * Reference to a field of type 'Bytes'
+   */
+  export type BytesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Bytes'>
+    
+
+
+  /**
+   * Reference to a field of type 'Bytes[]'
+   */
+  export type ListBytesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Bytes[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
   /**
    * Deep Input Types
    */
@@ -1972,6 +3345,7 @@ export namespace Prisma {
     email?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
+    UploadedDocument?: UploadedDocumentListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -1980,6 +3354,7 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     createdAt?: SortOrder
+    UploadedDocument?: UploadedDocumentOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -1991,6 +3366,7 @@ export namespace Prisma {
     name?: StringNullableFilter<"User"> | string | null
     password?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
+    UploadedDocument?: UploadedDocumentListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -2015,12 +3391,85 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
 
+  export type UploadedDocumentWhereInput = {
+    AND?: UploadedDocumentWhereInput | UploadedDocumentWhereInput[]
+    OR?: UploadedDocumentWhereInput[]
+    NOT?: UploadedDocumentWhereInput | UploadedDocumentWhereInput[]
+    id?: IntFilter<"UploadedDocument"> | number
+    userId?: StringFilter<"UploadedDocument"> | string
+    file?: BytesFilter<"UploadedDocument"> | Uint8Array
+    fileName?: StringFilter<"UploadedDocument"> | string
+    fileType?: StringFilter<"UploadedDocument"> | string
+    fileSize?: IntFilter<"UploadedDocument"> | number
+    createdAt?: DateTimeFilter<"UploadedDocument"> | Date | string
+    updatedAt?: DateTimeFilter<"UploadedDocument"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type UploadedDocumentOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    file?: SortOrder
+    fileName?: SortOrder
+    fileType?: SortOrder
+    fileSize?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type UploadedDocumentWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: UploadedDocumentWhereInput | UploadedDocumentWhereInput[]
+    OR?: UploadedDocumentWhereInput[]
+    NOT?: UploadedDocumentWhereInput | UploadedDocumentWhereInput[]
+    userId?: StringFilter<"UploadedDocument"> | string
+    file?: BytesFilter<"UploadedDocument"> | Uint8Array
+    fileName?: StringFilter<"UploadedDocument"> | string
+    fileType?: StringFilter<"UploadedDocument"> | string
+    fileSize?: IntFilter<"UploadedDocument"> | number
+    createdAt?: DateTimeFilter<"UploadedDocument"> | Date | string
+    updatedAt?: DateTimeFilter<"UploadedDocument"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type UploadedDocumentOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    file?: SortOrder
+    fileName?: SortOrder
+    fileType?: SortOrder
+    fileSize?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: UploadedDocumentCountOrderByAggregateInput
+    _avg?: UploadedDocumentAvgOrderByAggregateInput
+    _max?: UploadedDocumentMaxOrderByAggregateInput
+    _min?: UploadedDocumentMinOrderByAggregateInput
+    _sum?: UploadedDocumentSumOrderByAggregateInput
+  }
+
+  export type UploadedDocumentScalarWhereWithAggregatesInput = {
+    AND?: UploadedDocumentScalarWhereWithAggregatesInput | UploadedDocumentScalarWhereWithAggregatesInput[]
+    OR?: UploadedDocumentScalarWhereWithAggregatesInput[]
+    NOT?: UploadedDocumentScalarWhereWithAggregatesInput | UploadedDocumentScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"UploadedDocument"> | number
+    userId?: StringWithAggregatesFilter<"UploadedDocument"> | string
+    file?: BytesWithAggregatesFilter<"UploadedDocument"> | Uint8Array
+    fileName?: StringWithAggregatesFilter<"UploadedDocument"> | string
+    fileType?: StringWithAggregatesFilter<"UploadedDocument"> | string
+    fileSize?: IntWithAggregatesFilter<"UploadedDocument"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"UploadedDocument"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"UploadedDocument"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     name?: string | null
     email: string
     password: string
     createdAt?: Date | string
+    UploadedDocument?: UploadedDocumentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -2029,6 +3478,7 @@ export namespace Prisma {
     email: string
     password: string
     createdAt?: Date | string
+    UploadedDocument?: UploadedDocumentUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -2037,6 +3487,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    UploadedDocument?: UploadedDocumentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -2045,6 +3496,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    UploadedDocument?: UploadedDocumentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -2069,6 +3521,79 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UploadedDocumentCreateInput = {
+    file: Uint8Array
+    fileName: string
+    fileType: string
+    fileSize: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutUploadedDocumentInput
+  }
+
+  export type UploadedDocumentUncheckedCreateInput = {
+    id?: number
+    userId: string
+    file: Uint8Array
+    fileName: string
+    fileType: string
+    fileSize: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UploadedDocumentUpdateInput = {
+    file?: BytesFieldUpdateOperationsInput | Uint8Array
+    fileName?: StringFieldUpdateOperationsInput | string
+    fileType?: StringFieldUpdateOperationsInput | string
+    fileSize?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutUploadedDocumentNestedInput
+  }
+
+  export type UploadedDocumentUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
+    file?: BytesFieldUpdateOperationsInput | Uint8Array
+    fileName?: StringFieldUpdateOperationsInput | string
+    fileType?: StringFieldUpdateOperationsInput | string
+    fileSize?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UploadedDocumentCreateManyInput = {
+    id?: number
+    userId: string
+    file: Uint8Array
+    fileName: string
+    fileType: string
+    fileSize: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UploadedDocumentUpdateManyMutationInput = {
+    file?: BytesFieldUpdateOperationsInput | Uint8Array
+    fileName?: StringFieldUpdateOperationsInput | string
+    fileType?: StringFieldUpdateOperationsInput | string
+    fileSize?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UploadedDocumentUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
+    file?: BytesFieldUpdateOperationsInput | Uint8Array
+    fileName?: StringFieldUpdateOperationsInput | string
+    fileType?: StringFieldUpdateOperationsInput | string
+    fileSize?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -2112,9 +3637,19 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type UploadedDocumentListRelationFilter = {
+    every?: UploadedDocumentWhereInput
+    some?: UploadedDocumentWhereInput
+    none?: UploadedDocumentWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type UploadedDocumentOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type UserCountOrderByAggregateInput = {
@@ -2191,6 +3726,112 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type BytesFilter<$PrismaModel = never> = {
+    equals?: Uint8Array | BytesFieldRefInput<$PrismaModel>
+    in?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel>
+    notIn?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel>
+    not?: NestedBytesFilter<$PrismaModel> | Uint8Array
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type UploadedDocumentCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    file?: SortOrder
+    fileName?: SortOrder
+    fileType?: SortOrder
+    fileSize?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UploadedDocumentAvgOrderByAggregateInput = {
+    id?: SortOrder
+    fileSize?: SortOrder
+  }
+
+  export type UploadedDocumentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    file?: SortOrder
+    fileName?: SortOrder
+    fileType?: SortOrder
+    fileSize?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UploadedDocumentMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    file?: SortOrder
+    fileName?: SortOrder
+    fileType?: SortOrder
+    fileSize?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UploadedDocumentSumOrderByAggregateInput = {
+    id?: SortOrder
+    fileSize?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type BytesWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Uint8Array | BytesFieldRefInput<$PrismaModel>
+    in?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel>
+    notIn?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel>
+    not?: NestedBytesWithAggregatesFilter<$PrismaModel> | Uint8Array
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBytesFilter<$PrismaModel>
+    _max?: NestedBytesFilter<$PrismaModel>
+  }
+
+  export type UploadedDocumentCreateNestedManyWithoutUserInput = {
+    create?: XOR<UploadedDocumentCreateWithoutUserInput, UploadedDocumentUncheckedCreateWithoutUserInput> | UploadedDocumentCreateWithoutUserInput[] | UploadedDocumentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UploadedDocumentCreateOrConnectWithoutUserInput | UploadedDocumentCreateOrConnectWithoutUserInput[]
+    createMany?: UploadedDocumentCreateManyUserInputEnvelope
+    connect?: UploadedDocumentWhereUniqueInput | UploadedDocumentWhereUniqueInput[]
+  }
+
+  export type UploadedDocumentUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<UploadedDocumentCreateWithoutUserInput, UploadedDocumentUncheckedCreateWithoutUserInput> | UploadedDocumentCreateWithoutUserInput[] | UploadedDocumentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UploadedDocumentCreateOrConnectWithoutUserInput | UploadedDocumentCreateOrConnectWithoutUserInput[]
+    createMany?: UploadedDocumentCreateManyUserInputEnvelope
+    connect?: UploadedDocumentWhereUniqueInput | UploadedDocumentWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -2201,6 +3842,60 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type UploadedDocumentUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UploadedDocumentCreateWithoutUserInput, UploadedDocumentUncheckedCreateWithoutUserInput> | UploadedDocumentCreateWithoutUserInput[] | UploadedDocumentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UploadedDocumentCreateOrConnectWithoutUserInput | UploadedDocumentCreateOrConnectWithoutUserInput[]
+    upsert?: UploadedDocumentUpsertWithWhereUniqueWithoutUserInput | UploadedDocumentUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UploadedDocumentCreateManyUserInputEnvelope
+    set?: UploadedDocumentWhereUniqueInput | UploadedDocumentWhereUniqueInput[]
+    disconnect?: UploadedDocumentWhereUniqueInput | UploadedDocumentWhereUniqueInput[]
+    delete?: UploadedDocumentWhereUniqueInput | UploadedDocumentWhereUniqueInput[]
+    connect?: UploadedDocumentWhereUniqueInput | UploadedDocumentWhereUniqueInput[]
+    update?: UploadedDocumentUpdateWithWhereUniqueWithoutUserInput | UploadedDocumentUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UploadedDocumentUpdateManyWithWhereWithoutUserInput | UploadedDocumentUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UploadedDocumentScalarWhereInput | UploadedDocumentScalarWhereInput[]
+  }
+
+  export type UploadedDocumentUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UploadedDocumentCreateWithoutUserInput, UploadedDocumentUncheckedCreateWithoutUserInput> | UploadedDocumentCreateWithoutUserInput[] | UploadedDocumentUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UploadedDocumentCreateOrConnectWithoutUserInput | UploadedDocumentCreateOrConnectWithoutUserInput[]
+    upsert?: UploadedDocumentUpsertWithWhereUniqueWithoutUserInput | UploadedDocumentUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UploadedDocumentCreateManyUserInputEnvelope
+    set?: UploadedDocumentWhereUniqueInput | UploadedDocumentWhereUniqueInput[]
+    disconnect?: UploadedDocumentWhereUniqueInput | UploadedDocumentWhereUniqueInput[]
+    delete?: UploadedDocumentWhereUniqueInput | UploadedDocumentWhereUniqueInput[]
+    connect?: UploadedDocumentWhereUniqueInput | UploadedDocumentWhereUniqueInput[]
+    update?: UploadedDocumentUpdateWithWhereUniqueWithoutUserInput | UploadedDocumentUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UploadedDocumentUpdateManyWithWhereWithoutUserInput | UploadedDocumentUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UploadedDocumentScalarWhereInput | UploadedDocumentScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutUploadedDocumentInput = {
+    create?: XOR<UserCreateWithoutUploadedDocumentInput, UserUncheckedCreateWithoutUploadedDocumentInput>
+    connectOrCreate?: UserCreateOrConnectWithoutUploadedDocumentInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type BytesFieldUpdateOperationsInput = {
+    set?: Uint8Array
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type UserUpdateOneRequiredWithoutUploadedDocumentNestedInput = {
+    create?: XOR<UserCreateWithoutUploadedDocumentInput, UserUncheckedCreateWithoutUploadedDocumentInput>
+    connectOrCreate?: UserCreateOrConnectWithoutUploadedDocumentInput
+    upsert?: UserUpsertWithoutUploadedDocumentInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUploadedDocumentInput, UserUpdateWithoutUploadedDocumentInput>, UserUncheckedUpdateWithoutUploadedDocumentInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -2310,6 +4005,196 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedBytesFilter<$PrismaModel = never> = {
+    equals?: Uint8Array | BytesFieldRefInput<$PrismaModel>
+    in?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel>
+    notIn?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel>
+    not?: NestedBytesFilter<$PrismaModel> | Uint8Array
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedBytesWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Uint8Array | BytesFieldRefInput<$PrismaModel>
+    in?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel>
+    notIn?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel>
+    not?: NestedBytesWithAggregatesFilter<$PrismaModel> | Uint8Array
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBytesFilter<$PrismaModel>
+    _max?: NestedBytesFilter<$PrismaModel>
+  }
+
+  export type UploadedDocumentCreateWithoutUserInput = {
+    file: Uint8Array
+    fileName: string
+    fileType: string
+    fileSize: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UploadedDocumentUncheckedCreateWithoutUserInput = {
+    id?: number
+    file: Uint8Array
+    fileName: string
+    fileType: string
+    fileSize: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UploadedDocumentCreateOrConnectWithoutUserInput = {
+    where: UploadedDocumentWhereUniqueInput
+    create: XOR<UploadedDocumentCreateWithoutUserInput, UploadedDocumentUncheckedCreateWithoutUserInput>
+  }
+
+  export type UploadedDocumentCreateManyUserInputEnvelope = {
+    data: UploadedDocumentCreateManyUserInput | UploadedDocumentCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UploadedDocumentUpsertWithWhereUniqueWithoutUserInput = {
+    where: UploadedDocumentWhereUniqueInput
+    update: XOR<UploadedDocumentUpdateWithoutUserInput, UploadedDocumentUncheckedUpdateWithoutUserInput>
+    create: XOR<UploadedDocumentCreateWithoutUserInput, UploadedDocumentUncheckedCreateWithoutUserInput>
+  }
+
+  export type UploadedDocumentUpdateWithWhereUniqueWithoutUserInput = {
+    where: UploadedDocumentWhereUniqueInput
+    data: XOR<UploadedDocumentUpdateWithoutUserInput, UploadedDocumentUncheckedUpdateWithoutUserInput>
+  }
+
+  export type UploadedDocumentUpdateManyWithWhereWithoutUserInput = {
+    where: UploadedDocumentScalarWhereInput
+    data: XOR<UploadedDocumentUpdateManyMutationInput, UploadedDocumentUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type UploadedDocumentScalarWhereInput = {
+    AND?: UploadedDocumentScalarWhereInput | UploadedDocumentScalarWhereInput[]
+    OR?: UploadedDocumentScalarWhereInput[]
+    NOT?: UploadedDocumentScalarWhereInput | UploadedDocumentScalarWhereInput[]
+    id?: IntFilter<"UploadedDocument"> | number
+    userId?: StringFilter<"UploadedDocument"> | string
+    file?: BytesFilter<"UploadedDocument"> | Uint8Array
+    fileName?: StringFilter<"UploadedDocument"> | string
+    fileType?: StringFilter<"UploadedDocument"> | string
+    fileSize?: IntFilter<"UploadedDocument"> | number
+    createdAt?: DateTimeFilter<"UploadedDocument"> | Date | string
+    updatedAt?: DateTimeFilter<"UploadedDocument"> | Date | string
+  }
+
+  export type UserCreateWithoutUploadedDocumentInput = {
+    id?: string
+    name?: string | null
+    email: string
+    password: string
+    createdAt?: Date | string
+  }
+
+  export type UserUncheckedCreateWithoutUploadedDocumentInput = {
+    id?: string
+    name?: string | null
+    email: string
+    password: string
+    createdAt?: Date | string
+  }
+
+  export type UserCreateOrConnectWithoutUploadedDocumentInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutUploadedDocumentInput, UserUncheckedCreateWithoutUploadedDocumentInput>
+  }
+
+  export type UserUpsertWithoutUploadedDocumentInput = {
+    update: XOR<UserUpdateWithoutUploadedDocumentInput, UserUncheckedUpdateWithoutUploadedDocumentInput>
+    create: XOR<UserCreateWithoutUploadedDocumentInput, UserUncheckedCreateWithoutUploadedDocumentInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutUploadedDocumentInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutUploadedDocumentInput, UserUncheckedUpdateWithoutUploadedDocumentInput>
+  }
+
+  export type UserUpdateWithoutUploadedDocumentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUncheckedUpdateWithoutUploadedDocumentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UploadedDocumentCreateManyUserInput = {
+    id?: number
+    file: Uint8Array
+    fileName: string
+    fileType: string
+    fileSize: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UploadedDocumentUpdateWithoutUserInput = {
+    file?: BytesFieldUpdateOperationsInput | Uint8Array
+    fileName?: StringFieldUpdateOperationsInput | string
+    fileType?: StringFieldUpdateOperationsInput | string
+    fileSize?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UploadedDocumentUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    file?: BytesFieldUpdateOperationsInput | Uint8Array
+    fileName?: StringFieldUpdateOperationsInput | string
+    fileType?: StringFieldUpdateOperationsInput | string
+    fileSize?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UploadedDocumentUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    file?: BytesFieldUpdateOperationsInput | Uint8Array
+    fileName?: StringFieldUpdateOperationsInput | string
+    fileType?: StringFieldUpdateOperationsInput | string
+    fileSize?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
