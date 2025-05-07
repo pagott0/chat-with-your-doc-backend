@@ -29,4 +29,20 @@ export class UploadService {
       },
     });
   }
+
+  async getDocumentsByUser(userId: string) {
+    return this.prisma.uploadedDocument.findMany({
+      where: { userId },
+      select: {
+        id: true,
+        fileName: true,
+        extractedText: true,
+        createdAt: true,
+        updatedAt: true,
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+  }
 }

@@ -7,6 +7,7 @@ import {
   Request,
   BadRequestException,
   UseGuards,
+  Get,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UploadService } from './upload.service';
@@ -41,5 +42,11 @@ export class UploadController {
       file,
     );
     return uploadedDocument;
+  }
+
+  @Get()
+  async getUserDocuments(@Request() req) {
+    const userId = req.user.userId;
+    return this.uploadService.getDocumentsByUser(userId);
   }
 }
