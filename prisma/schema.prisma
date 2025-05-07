@@ -30,6 +30,7 @@ model UploadedDocument {
   fileName  String
   fileType  String
   fileSize  Int
+  extractedText      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   user      User     @relation(fields: [userId], references: [id]) // Relacionamento com a tabela de usuários

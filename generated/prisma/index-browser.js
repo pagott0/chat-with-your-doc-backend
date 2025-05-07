@@ -135,6 +135,7 @@ exports.Prisma.UploadedDocumentScalarFieldEnum = {
   fileName: 'fileName',
   fileType: 'fileType',
   fileSize: 'fileSize',
+  extractedText: 'extractedText',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

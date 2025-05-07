@@ -2089,6 +2089,7 @@ export namespace Prisma {
     fileName: string | null
     fileType: string | null
     fileSize: number | null
+    extractedText: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2100,6 +2101,7 @@ export namespace Prisma {
     fileName: string | null
     fileType: string | null
     fileSize: number | null
+    extractedText: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2111,6 +2113,7 @@ export namespace Prisma {
     fileName: number
     fileType: number
     fileSize: number
+    extractedText: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -2134,6 +2137,7 @@ export namespace Prisma {
     fileName?: true
     fileType?: true
     fileSize?: true
+    extractedText?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2145,6 +2149,7 @@ export namespace Prisma {
     fileName?: true
     fileType?: true
     fileSize?: true
+    extractedText?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2156,6 +2161,7 @@ export namespace Prisma {
     fileName?: true
     fileType?: true
     fileSize?: true
+    extractedText?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -2254,6 +2260,7 @@ export namespace Prisma {
     fileName: string
     fileType: string
     fileSize: number
+    extractedText: string
     createdAt: Date
     updatedAt: Date
     _count: UploadedDocumentCountAggregateOutputType | null
@@ -2284,6 +2291,7 @@ export namespace Prisma {
     fileName?: boolean
     fileType?: boolean
     fileSize?: boolean
+    extractedText?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2296,6 +2304,7 @@ export namespace Prisma {
     fileName?: boolean
     fileType?: boolean
     fileSize?: boolean
+    extractedText?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2308,6 +2317,7 @@ export namespace Prisma {
     fileName?: boolean
     fileType?: boolean
     fileSize?: boolean
+    extractedText?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2320,11 +2330,12 @@ export namespace Prisma {
     fileName?: boolean
     fileType?: boolean
     fileSize?: boolean
+    extractedText?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UploadedDocumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "file" | "fileName" | "fileType" | "fileSize" | "createdAt" | "updatedAt", ExtArgs["result"]["uploadedDocument"]>
+  export type UploadedDocumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "file" | "fileName" | "fileType" | "fileSize" | "extractedText" | "createdAt" | "updatedAt", ExtArgs["result"]["uploadedDocument"]>
   export type UploadedDocumentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -2347,6 +2358,7 @@ export namespace Prisma {
       fileName: string
       fileType: string
       fileSize: number
+      extractedText: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["uploadedDocument"]>
@@ -2779,6 +2791,7 @@ export namespace Prisma {
     readonly fileName: FieldRef<"UploadedDocument", 'String'>
     readonly fileType: FieldRef<"UploadedDocument", 'String'>
     readonly fileSize: FieldRef<"UploadedDocument", 'Int'>
+    readonly extractedText: FieldRef<"UploadedDocument", 'String'>
     readonly createdAt: FieldRef<"UploadedDocument", 'DateTime'>
     readonly updatedAt: FieldRef<"UploadedDocument", 'DateTime'>
   }
@@ -3227,6 +3240,7 @@ export namespace Prisma {
     fileName: 'fileName',
     fileType: 'fileType',
     fileSize: 'fileSize',
+    extractedText: 'extractedText',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -3401,6 +3415,7 @@ export namespace Prisma {
     fileName?: StringFilter<"UploadedDocument"> | string
     fileType?: StringFilter<"UploadedDocument"> | string
     fileSize?: IntFilter<"UploadedDocument"> | number
+    extractedText?: StringFilter<"UploadedDocument"> | string
     createdAt?: DateTimeFilter<"UploadedDocument"> | Date | string
     updatedAt?: DateTimeFilter<"UploadedDocument"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -3413,6 +3428,7 @@ export namespace Prisma {
     fileName?: SortOrder
     fileType?: SortOrder
     fileSize?: SortOrder
+    extractedText?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
@@ -3428,6 +3444,7 @@ export namespace Prisma {
     fileName?: StringFilter<"UploadedDocument"> | string
     fileType?: StringFilter<"UploadedDocument"> | string
     fileSize?: IntFilter<"UploadedDocument"> | number
+    extractedText?: StringFilter<"UploadedDocument"> | string
     createdAt?: DateTimeFilter<"UploadedDocument"> | Date | string
     updatedAt?: DateTimeFilter<"UploadedDocument"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -3440,6 +3457,7 @@ export namespace Prisma {
     fileName?: SortOrder
     fileType?: SortOrder
     fileSize?: SortOrder
+    extractedText?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UploadedDocumentCountOrderByAggregateInput
@@ -3459,6 +3477,7 @@ export namespace Prisma {
     fileName?: StringWithAggregatesFilter<"UploadedDocument"> | string
     fileType?: StringWithAggregatesFilter<"UploadedDocument"> | string
     fileSize?: IntWithAggregatesFilter<"UploadedDocument"> | number
+    extractedText?: StringWithAggregatesFilter<"UploadedDocument"> | string
     createdAt?: DateTimeWithAggregatesFilter<"UploadedDocument"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"UploadedDocument"> | Date | string
   }
@@ -3528,6 +3547,7 @@ export namespace Prisma {
     fileName: string
     fileType: string
     fileSize: number
+    extractedText: string
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutUploadedDocumentInput
@@ -3540,6 +3560,7 @@ export namespace Prisma {
     fileName: string
     fileType: string
     fileSize: number
+    extractedText: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -3549,6 +3570,7 @@ export namespace Prisma {
     fileName?: StringFieldUpdateOperationsInput | string
     fileType?: StringFieldUpdateOperationsInput | string
     fileSize?: IntFieldUpdateOperationsInput | number
+    extractedText?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutUploadedDocumentNestedInput
@@ -3561,6 +3583,7 @@ export namespace Prisma {
     fileName?: StringFieldUpdateOperationsInput | string
     fileType?: StringFieldUpdateOperationsInput | string
     fileSize?: IntFieldUpdateOperationsInput | number
+    extractedText?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3572,6 +3595,7 @@ export namespace Prisma {
     fileName: string
     fileType: string
     fileSize: number
+    extractedText: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -3581,6 +3605,7 @@ export namespace Prisma {
     fileName?: StringFieldUpdateOperationsInput | string
     fileType?: StringFieldUpdateOperationsInput | string
     fileSize?: IntFieldUpdateOperationsInput | number
+    extractedText?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3592,6 +3617,7 @@ export namespace Prisma {
     fileName?: StringFieldUpdateOperationsInput | string
     fileType?: StringFieldUpdateOperationsInput | string
     fileSize?: IntFieldUpdateOperationsInput | number
+    extractedText?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3756,6 +3782,7 @@ export namespace Prisma {
     fileName?: SortOrder
     fileType?: SortOrder
     fileSize?: SortOrder
+    extractedText?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -3772,6 +3799,7 @@ export namespace Prisma {
     fileName?: SortOrder
     fileType?: SortOrder
     fileSize?: SortOrder
+    extractedText?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -3783,6 +3811,7 @@ export namespace Prisma {
     fileName?: SortOrder
     fileType?: SortOrder
     fileSize?: SortOrder
+    extractedText?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -4056,6 +4085,7 @@ export namespace Prisma {
     fileName: string
     fileType: string
     fileSize: number
+    extractedText: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -4066,6 +4096,7 @@ export namespace Prisma {
     fileName: string
     fileType: string
     fileSize: number
+    extractedText: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -4106,6 +4137,7 @@ export namespace Prisma {
     fileName?: StringFilter<"UploadedDocument"> | string
     fileType?: StringFilter<"UploadedDocument"> | string
     fileSize?: IntFilter<"UploadedDocument"> | number
+    extractedText?: StringFilter<"UploadedDocument"> | string
     createdAt?: DateTimeFilter<"UploadedDocument"> | Date | string
     updatedAt?: DateTimeFilter<"UploadedDocument"> | Date | string
   }
@@ -4164,6 +4196,7 @@ export namespace Prisma {
     fileName: string
     fileType: string
     fileSize: number
+    extractedText: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -4173,6 +4206,7 @@ export namespace Prisma {
     fileName?: StringFieldUpdateOperationsInput | string
     fileType?: StringFieldUpdateOperationsInput | string
     fileSize?: IntFieldUpdateOperationsInput | number
+    extractedText?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4183,6 +4217,7 @@ export namespace Prisma {
     fileName?: StringFieldUpdateOperationsInput | string
     fileType?: StringFieldUpdateOperationsInput | string
     fileSize?: IntFieldUpdateOperationsInput | number
+    extractedText?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4193,6 +4228,7 @@ export namespace Prisma {
     fileName?: StringFieldUpdateOperationsInput | string
     fileType?: StringFieldUpdateOperationsInput | string
     fileSize?: IntFieldUpdateOperationsInput | number
+    extractedText?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
