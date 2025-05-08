@@ -8,6 +8,7 @@ import {
   BadRequestException,
   UseGuards,
   Get,
+  Param,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UploadService } from './upload.service';
@@ -41,12 +42,48 @@ export class UploadController {
       userId,
       file,
     );
-    return uploadedDocument;
+    return {
+      id: uploadedDocument.id,
+      fileName: uploadedDocument.fileName,
+      extractedText: uploadedDocument.extractedText,
+    };
   }
 
   @Get()
   async getUserDocuments(@Request() req) {
     const userId = req.user.userId;
     return this.uploadService.getDocumentsByUser(userId);
+  }
+
+  @Get(':id')
+  async getDocumentById(@Param('id') documentId: string, @Request() req) {
+    const userId = req.user.userId;
+    const document = await this.uploadService.getDocumentWithMessages(
+      userId,
+      Number(documentId),
+    );
+    return document;
+  }
+
+  @Post(':id/message')
+  async sendMessageToDocument(
+    @Param('id') documentId: number,
+    @Body('content') content: string,
+    @Body('imageExtractedText') imageExtractedText: string,
+    @Request() req,
+  ) {
+    const userId = req.user.userId;
+
+    if (!content || content.trim() === '') {
+      throw new BadRequestException('A mensagem não pode estar vazia.');
+    }
+
+    const messages = await this.uploadService.addMessage(
+      userId,
+      Number(documentId),
+      content,
+      imageExtractedText,
+    );
+    return messages;
   }
 }
