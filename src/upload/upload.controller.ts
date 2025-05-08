@@ -9,11 +9,13 @@ import {
   UseGuards,
   Get,
   Param,
+  Res,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UploadService } from './upload.service';
 import { PrismaService } from '../prisma/prisma.service'; // Supondo que você tenha um serviço Prisma configurado para acessar o banco
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { Response } from 'express';
 
 @UseGuards(JwtAuthGuard)
 @Controller('upload')
@@ -85,5 +87,25 @@ export class UploadController {
       imageExtractedText,
     );
     return messages;
+  }
+
+  @Get(':id/download')
+  async downloadDocument(
+    @Param('id') id: string,
+    @Res() res: Response,
+    @Request() req,
+  ) {
+    const userId = req.user.userId;
+    const pdfBuffer = await this.uploadService.generatePdfWithMessages(
+      userId,
+      Number(id),
+    );
+
+    res.set({
+      'Content-Type': 'application/pdf',
+      'Content-Disposition': `attachment; filename="document-${id}.pdf"`,
+    });
+
+    res.send(pdfBuffer);
   }
 }
