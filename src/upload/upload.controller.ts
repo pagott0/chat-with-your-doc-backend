@@ -13,7 +13,7 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UploadService } from './upload.service';
-import { PrismaService } from '../prisma/prisma.service'; // Supondo que você tenha um serviço Prisma configurado para acessar o banco
+import { PrismaService } from '../prisma/prisma.service';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { Response } from 'express';
 
@@ -35,7 +35,6 @@ export class UploadController {
       );
     }
 
-    // Verificar tamanho do arquivo (exemplo de 5MB)
     if (file.size > 5 * 1024 * 1024) {
       throw new BadRequestException('O arquivo é muito grande!');
     }

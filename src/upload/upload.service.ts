@@ -30,13 +30,11 @@ export class UploadService {
         },
       });
 
-      // Apaga o arquivo temporário após salvar no banco
       await fs.unlink(file.path);
 
       return savedDocument;
     } catch (error) {
       console.error('Erro ao salvar no banco de dados:', error);
-      // Tente apagar o arquivo mesmo em caso de erro
       await fs.unlink(file.path).catch(() => {});
       throw error;
     }
@@ -67,7 +65,6 @@ export class UploadService {
     content: string,
     imageExtractedText: string,
   ) {
-    // Salva a mensagem do usuário
     const userMessage = await this.prisma.message.create({
       data: {
         userId,
@@ -77,7 +74,6 @@ export class UploadService {
       },
     });
 
-    // Chamada para a LLM via OpenRouter
     let assistantResponse = '';
     try {
       const response = await fetch(
@@ -111,7 +107,6 @@ export class UploadService {
       throw new InternalServerErrorException('Erro ao gerar resposta da IA');
     }
 
-    // Salva a resposta do assistente
     const assistantMessage = await this.prisma.message.create({
       data: {
         userId,
@@ -212,7 +207,6 @@ export class UploadService {
       });
     }
 
-    // 2. Página com texto extraído
     let textPage = pdfDoc.addPage();
     const { width, height } = textPage.getSize();
     let y = height - margin;
@@ -253,7 +247,6 @@ export class UploadService {
       y -= lineHeight;
     }
 
-    // 3. Páginas com mensagens
     let messagePage = pdfDoc.addPage();
     y = height - margin;
 
