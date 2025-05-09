@@ -19,16 +19,28 @@ export class UploadService {
       console.error('Erro ao extrair texto com OCR:', error);
     }
 
-    return this.prisma.uploadedDocument.create({
-      data: {
-        userId,
-        file: fileBuffer,
-        fileName: file.originalname,
-        fileType: file.mimetype,
-        fileSize: file.size,
-        extractedText,
-      },
-    });
+    try {
+      const savedDocument = await this.prisma.uploadedDocument.create({
+        data: {
+          userId,
+          file: fileBuffer,
+          fileName: file.originalname,
+          fileType: file.mimetype,
+          fileSize: file.size,
+          extractedText,
+        },
+      });
+
+      // Apaga o arquivo temporário após salvar no banco
+      await fs.unlink(file.path);
+
+      return savedDocument;
+    } catch (error) {
+      console.error('Erro ao salvar no banco de dados:', error);
+      // Tente apagar o arquivo mesmo em caso de erro
+      await fs.unlink(file.path).catch(() => {});
+      throw error;
+    }
   }
 
   async getDocumentsByUser(userId: string) {
@@ -92,7 +104,6 @@ export class UploadService {
       );
 
       const data = await response.json();
-      console.log(data);
       assistantResponse =
         data.choices?.[0]?.message?.content ||
         'Não consegui gerar uma resposta.';
