@@ -14,7 +14,6 @@ export class UploadService {
     try {
       const { data } = await Tesseract.recognize(file.path, 'eng+por');
       extractedText = data.text;
-      console.log(extractedText);
     } catch (error) {
       console.error('Erro ao extrair texto com OCR:', error);
     }
