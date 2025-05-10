@@ -35,7 +35,7 @@ Make sure you have the following installed:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/backend-repo.git
+   git clone https://github.com/pagott0/chat-with-your-doc-backend
    cd backend-repo
 
 2. **Install dependencies:**
